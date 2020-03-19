@@ -5,7 +5,7 @@ const {
   RenameTypes,
   RenameObjectFields
 } = require("graphql-tools-fork");
-const { pascalize } = require("humps");
+const { pascalize, camelize } = require("humps");
 
 const NODE = {
   id: "123",
@@ -71,12 +71,10 @@ const schema = transformSchema(fakeRemoteSchema, [
     // Remote uses leading underscores for special fields. Leave them alone.
     if (fieldName[0] === "_") return fieldName;
 
-    return fieldName.replace(/([-_][a-z])/gi, $1 => {
-      return $1
-        .toUpperCase()
-        .replace("-", "")
-        .replace("_", "");
-    });
+    // This issue appears to be with renaming `a_item`
+    // if (fieldName === "a_item") return fieldName;
+
+    return camelize(fieldName);
   })
 ]);
 
