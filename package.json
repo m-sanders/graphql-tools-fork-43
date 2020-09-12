@@ -10,7 +10,7 @@
     "graphql": "^14.6.0",
     "graphql-tools-fork": "^8.9.6",
     "humps": "^2.0.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
